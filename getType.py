@@ -5,7 +5,7 @@ def getType(inst):
     # Having three sets, if return the instruction based on which set it is present at.
     #print "Received instruction = " + inst
     rType = ["ADD", "SUB", "MUL"]
-    iType = ["ADDI", "lw", "sw"]
+    iType = ["ADDI", "LW", "SW"]
     if inst in rType:
         return 'R'
     elif inst in iType:
