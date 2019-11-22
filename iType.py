@@ -5,40 +5,58 @@ from getRegisterCode import getRegisterCode
 
 def iType2Args(reg1, reg2):
 
-    index = reg2.find("(")
+    index = reg2.index("(")
+    print(index)
     offset = reg2[0:index]
     offset = int(offset)
+    print(offset + 2)
     tbinaddr = ""
     binaddr = ""
     tbinaddr += bin(offset).replace("0b", "")
     for i in range(0, 16 - len(tbinaddr)):
         binaddr += "0"
     binaddr += tbinaddr
-    index2 = reg2.find(")")
-
-    secondReg = reg2[index + 1, index2]
+    index2 = reg2.index(")")
+    print(index2)
+    secondReg = reg2[index + 1 : index2]
 
     regCode1 = getRegisterCode(reg1)
 
     printColor(regCode1, "red")
-    writeToFile(re)
+    writeToFile(regCode1)
 
     regCode2 = getRegisterCode(secondReg)
     printColor(regCode2, "red")
     writeToFile(regCode2)
 
-    printColor(offset)
+    printColor(binaddr, "red")
     writeToFile
     # Print 16 bit Immediate value
 
 
-def iType3Args(reg1, reg2, value):
+def iType3Args(inst, reg1, reg2, dest):
+    set1 = ["ADDI", "MULTI", "SUBI", "DIVI"]
+    set2 = ["BEQ", "BNE"]
+    binaddr = ""
+    if inst in set1:
+        tbinaddr = ""
+        tbinaddr += bin(dest).replace("0b", "")
+        for i in range(0, 16 - len(tbinaddr)):
+            binaddr += "0"
+        binaddr += tbinaddr
+        
+    else:
+        for i in range(6, len(dest)):
+            binaddr += "{0:04b}".format(int(dest), 16)
     regCode1 = getRegisterCode(reg1)
     printColor(regCode1, "")
     writeToFile(regCode1)
+
     regCode2 = getRegisterCode(reg2)
     printColor(regCode2, "")
     writeToFile(regCode2)
-    regCode3 = getRegisterCode(reg3)
-    printColor(regCode3, "")
-    writeToFile(regCode3)
+    printColor(binaddr)
+    writeToFile(binaddr)
+
+
+iType2Args("s0", "5(s1)")
