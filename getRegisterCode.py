@@ -20,4 +20,6 @@ def getRegisterCode(reg):
         "t8": "11000",
         "t8": "11001",
     }
-    return registers[reg]
+    if reg in registers:
+        return registers[reg]
+    raise Exception("Invalid register inputted :" + reg)
