@@ -26,11 +26,11 @@ def iType2Args(reg1, reg2):
     writeToFile(regCode1)
 
     regCode2 = getRegisterCode(secondReg)
-    printColor(regCode2, "red")
+    printColor(regCode2, "blue")
     writeToFile(regCode2)
 
-    printColor(binaddr, "red")
-    writeToFile
+    printColor(binaddr + "\n", "green")
+    writeToFile(binaddr + "\n")
     # Print 16 bit Immediate value
 
 
@@ -44,19 +44,19 @@ def iType3Args(inst, reg1, reg2, dest):
         for i in range(0, 16 - len(tbinaddr)):
             binaddr += "0"
         binaddr += tbinaddr
-        
+
     else:
         for i in range(6, len(dest)):
             binaddr += "{0:04b}".format(int(dest), 16)
     regCode1 = getRegisterCode(reg1)
-    printColor(regCode1, "")
+    printColor(regCode1, "red")
     writeToFile(regCode1)
 
     regCode2 = getRegisterCode(reg2)
-    printColor(regCode2, "")
+    printColor(regCode2, "blue")
     writeToFile(regCode2)
-    printColor(binaddr)
-    writeToFile(binaddr)
+    printColor(binaddr, "green")
+    writeToFile(binaddr + "\n")
 
 
 iType2Args("s0", "5(s1)")
