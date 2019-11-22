@@ -16,10 +16,11 @@ with open("input.txt") as file:
             break
         string = "".join([i for i in string if i not in bad_char])
         data = string.split()
-        instType = getType(data[0])
-        print(hexAdd(counter) + ": ")
+
+        print(hexAdd(counter) + ": ", end="")
         counter += 1
 
+        instType = getType(data[0])
         if instType == "R":
             rType(data[0], data[1], data[2], data[3])
             rcount += 1
@@ -30,8 +31,9 @@ with open("input.txt") as file:
             if len(data) == 3:
                 iType2Args(data[1], data[2])
             elif len(data) == 4:
-                iType3Args(data[1], data[2], data[3])
+                iType3Args(data[0], data[1], data[2], data[3])
             icount += 1
-    print("Number of R-Type Instructions : " + rcount)
-    print("Number of I-Type Instructions : " + icount)
-    print("Number of J-Type Instructions : " + jcount)
+
+    print("Number of R-Type Instructions : " + str(rcount))
+    print("Number of I-Type Instructions : " + str(icount))
+    print("Number of J-Type Instructions : " + str(jcount))

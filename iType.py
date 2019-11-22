@@ -34,7 +34,7 @@ def iType3Args(inst, reg1, reg2, dest):
     binaddr = ""
 
     if inst in set1:
-        binaddr += bin(dest).replace("0b", "")
+        binaddr += bin(int(dest)).replace("0b", "")
         binaddr = binaddr.zfill(16)
 
     else:
@@ -49,5 +49,5 @@ def iType3Args(inst, reg1, reg2, dest):
     printColor(regCode2, "blue")
     writeToFile(regCode2)
 
-    printColor(binaddr, "green")
+    printColor(binaddr + "\n", "green")
     writeToFile(binaddr + "\n")

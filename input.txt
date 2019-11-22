@@ -1,13 +1,5 @@
 lw $s1, 0($s0)
-ADDI $t1, $zero, 4
-ADDI $t0, $zero, 1
-ADDI $t9, $zero, 1
-ADDI $t7, $zero, 1
-LOOP :
-ADD $t4, $zero, $t0
-ADDI $t5, $zero, 1
-beq $t9, $t7, REST
-LOOP1 :
-ADD $t0, $t0, $t4
-ADDI $t5, $t5, 1
-bne $t5, $t9, LOOP1
+ADDI $t1, $0, 4
+ADDI $t0, $0, 1
+ADDI $t9, $0, 1
+ADDI $t7, $0, 1
