@@ -1,24 +1,37 @@
-from getType import getType
-from rType import rType
+from getType import *
+from rType import *
 from iType import *
-import csv
+from jType import *
+from hexAdd import *
+
 with open("input.txt") as file:
+    counter = 0
+    icount = 0
+    jcount = 0
+    rcount = 0
     while True:
-        bad_char = [',', '$', '\\n']
+        bad_char = [",", "$", "\\n"]
         string = file.readline()
         if string == "":
             break
         string = "".join([i for i in string if i not in bad_char])
         data = string.split()
-        print (data)
         instType = getType(data[0])
-        if(instType == 'R'):
-            rType()
-        elif(instType == 'J'):
+        print(hexAdd(counter) + ": ")
+        counter += 1
+
+        if instType == "R":
+            rType(data[0], data[1], data[2], data[3])
+            rcount += 1
+        elif instType == "J":
             jType(data[1])
+            jcount += 1
         else:
-            if(len(data) == 3):
+            if len(data) == 3:
                 iType2Args(data[1], data[2])
-            elif(len(data) == 4):
+            elif len(data) == 4:
                 iType3Args(data[1], data[2], data[3])
-        print (instType)
+            icount += 1
+    print("Number of R-Type Instructions : " + rcount)
+    print("Number of I-Type Instructions : " + icount)
+    print("Number of J-Type Instructions : " + jcount)
