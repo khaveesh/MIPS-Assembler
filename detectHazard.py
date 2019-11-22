@@ -5,4 +5,5 @@ def HazardDectection():
 #Runtime checking word alignment
 # Invalid instruction checking and exception handling
 # Print the address of individual instructions.f
-#
+#Instruction counter.
+# 0x00400000
