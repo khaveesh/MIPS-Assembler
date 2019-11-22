@@ -5,8 +5,6 @@ from writeToFile import writeToFile
 
 
 def getType(inst):
-    # Having three sets, if return the instruction based on which set it is present at.
-    # print "Received instruction = " + inst
     rType = ["ADD", "SUB", "MULT"]
     iType = ["ADDI", "LW", "SW", "SUBI"]
     opcode = {

@@ -32,14 +32,17 @@ def rType(instruction, r1, r2, r3):
     }
     shamt = "00000"
     function = function_decoder[instruction]
+
     if instruction.lower() == "mfhi" or instruction.lower() == "mflo":
         reg1 = "00000"
         reg2 = "00000"
         reg3 = getRegisterCode(r1)
+
     elif instruction.lower() == "mtlo" or instruction.lower() == "mthi":
         reg1 = getRegisterCode(r1)
         reg2 = "00000"
         reg3 = "00000"
+
     elif (
         instruction.lower() == "div"
         or instruction.lower() == "divu"
@@ -49,6 +52,7 @@ def rType(instruction, r1, r2, r3):
         reg1 = getRegisterCode(r1)
         reg2 = getRegisterCode(r2)
         reg3 = "00000"
+
     elif (
         instruction.lower() == "sll"
         or instruction.lower() == "sra"
@@ -58,10 +62,12 @@ def rType(instruction, r1, r2, r3):
         reg2 = getRegisterCode(r2)
         reg3 = "00000"
         shamt = r3
+
     else:
         reg1 = getRegisterCode(r1)
         reg2 = getRegisterCode(r2)
         reg3 = getRegisterCode(r3)
+
     printColor(reg1, "red")
     printColor(reg2, "blue")
     printColor(reg3, "green")

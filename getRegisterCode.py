@@ -22,4 +22,5 @@ def getRegisterCode(reg):
     }
     if reg in registers:
         return registers[reg]
-    raise Exception("Invalid register inputted :" + reg)
+    else:
+        raise Exception("Invalid register inputted :" + reg)

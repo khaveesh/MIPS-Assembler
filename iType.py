@@ -25,7 +25,6 @@ def iType2Args(reg1, reg2):
 
     printColor(binaddr + "\n", "green")
     writeToFile(binaddr + "\n")
-    # Print 16 bit Immediate value
 
 
 def iType3Args(inst, reg1, reg2, dest):
