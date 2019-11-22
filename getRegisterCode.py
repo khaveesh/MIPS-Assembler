@@ -18,7 +18,7 @@ def getRegisterCode(reg):
         "s6": "10110",
         "s7": "10111",
         "t8": "11000",
-        "t8": "11001",
+        "t9": "11001",
     }
     if reg in registers:
         return registers[reg]
