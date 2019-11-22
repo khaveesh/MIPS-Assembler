@@ -5,6 +5,7 @@ from jType import *
 from hexAdd import *
 
 with open("input.txt") as file:
+    open("out.o", "w").close()
     counter = 0
     icount = 0
     jcount = 0
