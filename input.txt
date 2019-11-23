@@ -1,5 +1,5 @@
-lw $s1, 0($s0)
-ADDI $t1, $0, 4
+lw $s1, 0($s0), 5
+ADDI $t1, $0
 ADDI $t0, $0, 1
 ADDI $t9, $0, 1
 ADDI $t7, $0, 1

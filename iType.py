@@ -3,7 +3,9 @@ from writeToFile import writeToFile
 from getRegisterCode import getRegisterCode
 
 
-def iType2Args(reg1, reg2):
+def iType2Args(inst, reg1, reg2):
+    if(inst.upper() != "SW" and inst.upper() != "LW"):
+        raise Exception("Wrong instruction format")
     index = reg2.index("(")
     offset = reg2[0:index]
     offset = int(offset)

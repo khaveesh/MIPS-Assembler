@@ -30,7 +30,7 @@ with open("input.txt") as file:
             jcount += 1
         else:
             if len(data) == 3:
-                iType2Args(data[1], data[2])
+                iType2Args(data[0], data[1], data[2])
             elif len(data) == 4:
                 iType3Args(data[0], data[1], data[2], data[3])
             icount += 1
