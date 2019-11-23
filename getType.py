@@ -42,4 +42,5 @@ def getType(inst):
         return "J"
 
     else:
-        raise Exception("Invalid OpCode : " + inst)
+        #raise Exception("Invalid OpCode : " + inst)
+        print("Invalid opCode")
