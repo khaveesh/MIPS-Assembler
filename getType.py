@@ -31,19 +31,23 @@ def getType(inst):
         "OR",
         "MULTU",
     ]
-    iType = ["ADDI", "LW", "SW", "SUBI", "SLTI", "BLEZ"]
+    iType = ["ADDI", "LW", "SW", "SUBI", "SLTI", "BLEZ", "MULTI", "BNE", "BEQ", "BGTZ", "BLT"]
+
     opcode = {
         # R - TYPE
         # ALL THE R TYPE HAVE 00000000 OPCODE.
         # I - TYPE
         "ADDI": "001000",
         "SLTI": "001010",
+        "MULTI":"",
         "LW": "100011",
         "SW": "101011",
         "BEQ": "000100",
         "BGTZ": "000111",
         "BNE": "000101",
         "BLEZ": "000110",
+        "BLT": "100011",
+        "BLTZ": "000001",
         # J - TYPE
         "J": "000010",
     }
