@@ -31,7 +31,19 @@ def getType(inst):
         "OR",
         "MULTU",
     ]
-    iType = ["ADDI", "LW", "SW", "SUBI", "SLTI", "BLEZ", "MULTI", "BNE", "BEQ", "BGTZ", "BLT"]
+    iType = [
+        "ADDI",
+        "LW",
+        "SW",
+        "SUBI",
+        "SLTI",
+        "BLEZ",
+        "MULTI",
+        "BNE",
+        "BEQ",
+        "BGTZ",
+        "BLT",
+    ]
 
     opcode = {
         # R - TYPE
@@ -39,7 +51,7 @@ def getType(inst):
         # I - TYPE
         "ADDI": "001000",
         "SLTI": "001010",
-        "MULTI":"",
+        "MULTI": "",
         "LW": "100011",
         "SW": "101011",
         "BEQ": "000100",
@@ -53,8 +65,8 @@ def getType(inst):
     }
 
     if inst.upper() in rType:
-        printColor("00000000", "yellow")
-        writeToFile("00000000")
+        printColor("000000", "yellow")
+        writeToFile("000000")
         return "R"
 
     elif inst.upper() in iType:

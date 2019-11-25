@@ -61,7 +61,7 @@ def rType(instruction, r1, r2, r3):
         reg1 = getRegisterCode(r1)
         reg2 = getRegisterCode(r2)
         reg3 = "00000"
-        shamt = r3
+        shamt = bin(int(r3))[2:].zfill(5)
 
     else:
         reg1 = getRegisterCode(r1)
@@ -72,5 +72,5 @@ def rType(instruction, r1, r2, r3):
     printColor(reg2, "blue")
     printColor(reg3, "green")
     printColor(shamt, "cyan")
-    printColor(function + "\n", "grey")
+    printColor(function + "\n", "white")
     writeToFile(reg1 + reg2 + reg3 + shamt + function + "\n")

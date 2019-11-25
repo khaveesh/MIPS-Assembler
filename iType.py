@@ -8,11 +8,11 @@ def iType2Args(inst, reg1, reg2):
     if inst.upper() not in l:
         raise Exception(" Wrong instruction format")
 
-        regCode1 = getRegisterCode(reg1)
-        printColor(regCode1, "red")
-        writeToFile(regCode1)
+    regCode1 = getRegisterCode(reg1)
+    printColor(regCode1, "red")
+    writeToFile(regCode1)
 
-    if(reg2.find("(")  != -1):
+    if reg2.find("(") != -1:
         index = reg2.index("(")
         offset = reg2[0:index]
         offset = int(offset)
@@ -23,7 +23,6 @@ def iType2Args(inst, reg1, reg2):
         binaddr = binaddr.zfill(16)
         index2 = reg2.index(")")
         secondReg = reg2[(index + 1) : index2]
-
 
         regCode2 = getRegisterCode(secondReg)
         printColor(regCode2, "blue")
@@ -42,12 +41,11 @@ def iType2Args(inst, reg1, reg2):
 def iType3Args(inst, reg1, reg2, dest):
     set1 = ["ADDI", "SUBI", "DIVI", "SLTI"]
     set2 = ["BEQ", "BNE", "BLT", "BGT"]
-    
     binaddr = ""
 
     if inst.upper() in set1:
-        if(dest.find("0x") == -1):
-            binaddr += bin(int(dest)).replace("0b", "")
+        if dest.find("0x") == -1:
+            binaddr += bin(int(dest, 16)).replace("0b", "")
             binaddr = binaddr.zfill(16)
         else:
             for i in range(6, len(dest)):

@@ -12,6 +12,7 @@ with open("input.txt") as file:
     jcount = 0
     rcount = 0
     labelstraddr: Dict[str, str] = {}
+    set2 = ["BEQ", "BNE", "BLT", "BGT", "BLTZ", "BLEZ", "BGTZ"]
     while True:
         bad_char = [",", "$", "\\n"]
         string = file.readline()
@@ -35,10 +36,18 @@ with open("input.txt") as file:
             jType(labelstraddr.get(data[1]))
             jcount += 1
         else:
-            if len(data) == 3:
-                iType2Args(data[0], data[1], data[2])
-            elif len(data) == 4:
-                iType3Args(data[0], data[1], data[2], data[3])
+            if data[0].upper() in set2:
+                if len(data) == 3:
+                    data[2] = str(labelstraddr.get(data[2]))
+                    iType2Args(data[0], data[1], data[2])
+                elif len(data) == 4:
+                    data[3] = str(labelstraddr.get(data[3]))
+                    iType3Args(data[0], data[1], data[2], data[3])
+            else:
+                if len(data) == 3:
+                    iType2Args(data[0], data[1], data[2])
+                elif len(data) == 4:
+                    iType3Args(data[0], data[1], data[2], data[3])
             icount += 1
 
     print("Number of R-Type Instructions : " + str(rcount))
