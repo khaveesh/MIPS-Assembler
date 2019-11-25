@@ -5,8 +5,8 @@ from getRegisterCode import getRegisterCode
 
 def iType2Args(inst, reg1, reg2):
     errorCode = ""
-    try :
-        if(inst.upper() != "SW" and inst.upper() != "LW"):
+    try:
+        if inst.upper() != "SW" and inst.upper() != "LW":
             raise Exception(" Wrong instruction format")
         index = reg2.index("(")
         offset = reg2[0:index]
@@ -18,7 +18,7 @@ def iType2Args(inst, reg1, reg2):
         binaddr += bin(offset).replace("0b", "")
         binaddr = binaddr.zfill(16)
         index2 = reg2.index(")")
-        secondReg = reg2[index + 1 : index2]
+        secondReg = reg2[(index + 1) : index2]
 
         regCode1 = getRegisterCode(reg1)
         printColor(regCode1, "red")

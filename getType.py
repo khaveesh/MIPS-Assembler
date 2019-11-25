@@ -5,13 +5,36 @@ from writeToFile import writeToFile
 
 
 def getType(inst):
-    rType = ['AND', 'SUBU', 'MFLO', 'MFHI', 'SLTU', 'ADDU', 'XOR', 'SUB', 'ADD', 'NOR', 'SRLV', 'SRAV',
-    'DIVU', 'MULT', 'SRA', 'SLT', 'SLLV', 'SRL', 'SLL', 'MTLO', 'MTHI', 'DIV', 'OR', 'MULTU']
+    rType = [
+        "AND",
+        "SUBU",
+        "MFLO",
+        "MFHI",
+        "SLTU",
+        "ADDU",
+        "XOR",
+        "SUB",
+        "ADD",
+        "NOR",
+        "SRLV",
+        "SRAV",
+        "DIVU",
+        "MULT",
+        "SRA",
+        "SLT",
+        "SLLV",
+        "SRL",
+        "SLL",
+        "MTLO",
+        "MTHI",
+        "DIV",
+        "OR",
+        "MULTU",
+    ]
     iType = ["ADDI", "LW", "SW", "SUBI", "SLTI", "BLEZ"]
     opcode = {
         # R - TYPE
         # ALL THE R TYPE HAVE 00000000 OPCODE.
-
         # I - TYPE
         "ADDI": "001000",
         "SLTI": "001010",
@@ -21,7 +44,6 @@ def getType(inst):
         "BGTZ": "000111",
         "BNE": "000101",
         "BLEZ": "000110",
-
         # J - TYPE
         "J": "000010",
     }
@@ -42,5 +64,5 @@ def getType(inst):
         return "J"
 
     else:
-        #raise Exception("Invalid OpCode : " + inst)
+        # raise Exception("Invalid OpCode : " + inst)
         print("Invalid opCode")

@@ -1,8 +1,8 @@
-from getType import *
-from rType import *
-from iType import *
-from jType import *
-from hexAdd import *
+from getType import getType
+from rType import rType
+from iType import iType2Args, iType3Args
+from jType import jType
+from hexAdd import hexAdd
 
 with open("input.txt") as file:
     open("out.o", "w").close()
