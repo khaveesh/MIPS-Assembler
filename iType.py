@@ -4,38 +4,30 @@ from getRegisterCode import getRegisterCode
 
 
 def iType2Args(inst, reg1, reg2):
-    l = ["SW", "LW", "BLTZ", "BLEZ", "BGTZ"]
+    l = ["SW", "LW"]
     if inst.upper() not in l:
         raise Exception(" Wrong instruction format")
 
 
-    if reg2.find("(") != -1:
-        index = reg2.index("(")
-        offset = reg2[0:index]
-        offset = int(offset)
-        if offset % 4:
-            raise Exception(" Boundary is not word aligned")
-        binaddr = ""
-        binaddr += bin(offset).replace("0b", "")
-        binaddr = binaddr.zfill(16)
-        index2 = reg2.index(")")
-        secondReg = reg2[(index + 1) : index2]
+    index = reg2.index("(")
+    offset = reg2[0:index]
+    offset = int(offset)
+    if offset % 4:
+        raise Exception(" Boundary is not word aligned")
+    binaddr = ""
+    binaddr += bin(offset).replace("0b", "")
+    binaddr = binaddr.zfill(16)
+    index2 = reg2.index(")")
+    secondReg = reg2[(index + 1) : index2]
 
-        regCode2 = getRegisterCode(secondReg)
-        printColor(regCode2, "blue")
-        writeToFile(regCode2)
-
-        printColor(binaddr + "\n", "green")
-        writeToFile(binaddr + "\n")
+    regCode2 = getRegisterCode(secondReg)
+    printColor(regCode2, "red")
+    writeToFile(regCode2)
     regCode1 = getRegisterCode(reg1)
-    printColor(regCode1, "red")
-    writeToFile(regCode1)
-    else:
-        binaddr = ""
-        for i in range(3, len(reg2)):
-            binaddr += "{0:04b}".format(int(reg2[i], 16))
-        printColor(binaddr[2:] + "\n", "blue")
-        writeToFile(binaddr[2:] + "\n")
+    printColor(regCode2, "blue")
+    writeToFile(regCode2)
+    printColor(binaddr + "\n", "green")
+    writeToFile(binaddr + "\n")
 
 
 def iType3Args(inst, reg1, reg2, dest):
