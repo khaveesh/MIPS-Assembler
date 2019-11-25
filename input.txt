@@ -1,23 +1,29 @@
+lw $s0, 0x10010000
+lw $s1, 0x10010004
+lw $s2, 0x10010008
+addi $s3, $0, 0x1001000C
+addi $s4, $0, 0x100100a0
+addi $s5, $0, 0x10010100
 addi $t0, $0, 0
 iloop:addi $t1, $0, 0
 jloop:sll $t3, $t0, 2 #i*4
 sll $t4, $t1, 2 #j*4
-mult $t2, $t3, $s2
+mul $t2, $t3, $s2
 add $t2, $t2, $t4
 add $t2, $t2, $s5
 sw $0, 0($t2)
 addi $t5, $0, 0
 kloop:lw $s6, 0($t2)
 sll $t6, $t5, 2 #k*4
-mult $t8, $t3, $s1
+mul $t8, $t3, $s1
 add $t8, $t8, $t6
 add $t8, $t8, $s3
 lw $s7, 0($t8)
-mult $t8, $t6, $s2
+mul $t8, $t6, $s2
 add $t8, $t8, $t4
 add $t8, $t8, $s4
 lw $t9, 0($t8)
-mult $t9, $t9, $s7
+mul $t9, $t9, $s7
 add $s6, $s6, $t9
 sw $s6, 0($t2)
 addi $t5, $t5, 1
@@ -26,4 +32,3 @@ addi $t1, $t1, 1
 blt $t1, $s2, jloop
 addi $t0, $t0, 1
 blt $t0, $s0, iloop
-end:
