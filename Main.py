@@ -3,6 +3,7 @@ from rType import rType
 from iType import iType2Args, iType3Args
 from jType import jType
 from hexAdd import hexAdd
+from typing import Dict
 
 with open("input.txt") as file:
     open("out.o", "w").close()
@@ -10,11 +11,16 @@ with open("input.txt") as file:
     icount = 0
     jcount = 0
     rcount = 0
+    labelstraddr: Dict[str, str] = {}
     while True:
         bad_char = [",", "$", "\\n"]
         string = file.readline()
         if string == "":
             break
+        label = string.find(":")
+        if label != -1:
+            labelstraddr[string[0:label]] = hexAdd(counter)
+            string = string[label + 1 :]
         string = "".join([i for i in string if i not in bad_char])
         data = string.split()
 
@@ -26,7 +32,7 @@ with open("input.txt") as file:
             rType(data[0], data[1], data[2], data[3])
             rcount += 1
         elif instType == "J":
-            jType(data[1])
+            jType(labelstraddr.get(data[1]))
             jcount += 1
         else:
             if len(data) == 3:
