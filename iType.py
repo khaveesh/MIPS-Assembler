@@ -8,9 +8,6 @@ def iType2Args(inst, reg1, reg2):
     if inst.upper() not in l:
         raise Exception(" Wrong instruction format")
 
-    regCode1 = getRegisterCode(reg1)
-    printColor(regCode1, "red")
-    writeToFile(regCode1)
 
     if reg2.find("(") != -1:
         index = reg2.index("(")
@@ -30,6 +27,9 @@ def iType2Args(inst, reg1, reg2):
 
         printColor(binaddr + "\n", "green")
         writeToFile(binaddr + "\n")
+    regCode1 = getRegisterCode(reg1)
+    printColor(regCode1, "red")
+    writeToFile(regCode1)
     else:
         binaddr = ""
         for i in range(3, len(reg2)):
@@ -55,13 +55,15 @@ def iType3Args(inst, reg1, reg2, dest):
         for i in range(6, len(dest)):
             binaddr += "{0:04b}".format(int(dest[i], 16))
 
-    regCode1 = getRegisterCode(reg1)
-    printColor(regCode1, "red")
-    writeToFile(regCode1)
+
 
     regCode2 = getRegisterCode(reg2)
     printColor(regCode2, "blue")
     writeToFile(regCode2)
+
+    regCode1 = getRegisterCode(reg1)
+    printColor(regCode1, "red")
+    writeToFile(regCode1)
 
     printColor(binaddr + "\n", "green")
     writeToFile(binaddr + "\n")
