@@ -8,7 +8,6 @@ def iType2Args(inst, reg1, reg2):
     if inst.upper() not in l:
         raise Exception(" Wrong instruction format")
 
-
     index = reg2.index("(")
     offset = reg2[0:index]
     offset = int(offset)
@@ -24,8 +23,8 @@ def iType2Args(inst, reg1, reg2):
     printColor(regCode2, "red")
     writeToFile(regCode2)
     regCode1 = getRegisterCode(reg1)
-    printColor(regCode2, "blue")
-    writeToFile(regCode2)
+    printColor(regCode1, "blue")
+    writeToFile(regCode1)
     printColor(binaddr + "\n", "green")
     writeToFile(binaddr + "\n")
 
@@ -46,8 +45,6 @@ def iType3Args(inst, reg1, reg2, dest):
     elif inst.upper() in set2:
         for i in range(6, len(dest)):
             binaddr += "{0:04b}".format(int(dest[i], 16))
-
-
 
     regCode2 = getRegisterCode(reg2)
     printColor(regCode2, "blue")
