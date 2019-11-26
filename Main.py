@@ -6,7 +6,7 @@ from hexAdd import hexAdd
 from typing import Dict
 
 with open("input.txt") as file:
-    open("out.o", "w").close()
+    open("out.txt", "w").close()
     counter = 0
     icount = 0
     jcount = 0
@@ -14,7 +14,6 @@ with open("input.txt") as file:
     labelstraddr: Dict[str, str] = {}
     set2 = ["BEQ", "BNE", "BLT", "BGT", "BLTZ", "BLEZ", "BGTZ"]
     while True:
-        bad_char = [",", "$", "\\n"]
         string = file.readline()
         if string == "":
             break
@@ -22,15 +21,36 @@ with open("input.txt") as file:
         if label != -1:
             labelstraddr[string[0:label]] = hexAdd(counter)
             string = string[label + 1 :]
+        counter+=1
+    counter = 0
+    file.seek(0)
+    while True:
+        bad_char = [",", "$", "\\n"]
+        string = file.readline()
+        if string == "":
+            break
+        label = string.find(":")
+        if label != -1:
+             # labelstraddr[string[0:label]] = hexAdd(counter)
+            string = string[label + 1 :]
+            if len(string) == 0:
+                break
+        for i in range(len(string)-1):
+            if(string[i] == ',' and string[i+1] != ' '):
+                string = string[:i]+' '+string[i+1:]
         string = "".join([i for i in string if i not in bad_char])
         data = string.split()
 
         print(hexAdd(counter) + ": ", end="")
         counter += 1
-
         instType = getType(data[0])
         if instType == "R":
-            rType(data[0], data[1], data[2], data[3])
+            if len(data) == 2:
+                rType(data[0], data[1], "", "")
+            elif len(data) == 3:
+                rType(data[0], data[1], data[2], "")
+            else:
+                rType(data[0], data[1], data[2], data[3])
             rcount += 1
         elif instType == "J":
             jType(labelstraddr.get(data[1]))

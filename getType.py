@@ -47,11 +47,10 @@ def getType(inst):
 
     opcode = {
         # R - TYPE
-        # ALL THE R TYPE HAVE 00000000 OPCODE.
+        # ALL THE R TYPE HAVE 000000 OPCODE.
         # I - TYPE
         "ADDI": "001000",
         "SLTI": "001010",
-        "MULTI": "",
         "LW": "100011",
         "SW": "101011",
         "BEQ": "000100",

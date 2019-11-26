@@ -24,8 +24,8 @@ def iType2Args(inst, reg1, reg2):
     printColor(regCode2, "red")
     writeToFile(regCode2)
     regCode1 = getRegisterCode(reg1)
-    printColor(regCode2, "blue")
-    writeToFile(regCode2)
+    printColor(regCode1, "blue")
+    writeToFile(regCode1)
     printColor(binaddr + "\n", "green")
     writeToFile(binaddr + "\n")
 
@@ -36,12 +36,19 @@ def iType3Args(inst, reg1, reg2, dest):
     binaddr = ""
 
     if inst.upper() in set1:
-        if dest.find("0x") == -1:
-            binaddr += bin(int(dest, 16)).replace("0b", "")
+        if int(dest) >= 0:
+            #binaddr += bin(int(dest, 16)).replace("0b", "")
+            binaddr += bin(int(dest)).replace("0b", "")
             binaddr = binaddr.zfill(16)
         else:
-            for i in range(6, len(dest)):
-                binaddr += "{0:04b}".format(int(dest[i], 16))
+            #print(dest)
+            num = 65535 + int(dest)
+            num = num + 1
+            #print(num)
+            num = str(num)
+            #print(num)
+            binaddr += bin(int(num)).replace("0b", "")
+            binaddr = binaddr.zfill(16)
 
     elif inst.upper() in set2:
         for i in range(6, len(dest)):
@@ -50,11 +57,11 @@ def iType3Args(inst, reg1, reg2, dest):
 
 
     regCode2 = getRegisterCode(reg2)
-    printColor(regCode2, "blue")
+    printColor(regCode2, "red")
     writeToFile(regCode2)
 
     regCode1 = getRegisterCode(reg1)
-    printColor(regCode1, "red")
+    printColor(regCode1, "blue")
     writeToFile(regCode1)
 
     printColor(binaddr + "\n", "green")
