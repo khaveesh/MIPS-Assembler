@@ -30,7 +30,12 @@ with open("input.txt") as file:
 
         instType = getType(data[0])
         if instType == "R":
-            rType(data[0], data[1], data[2], data[3])
+            if len(data) == 2:
+                rType(data[0], data[1], "", "")
+            elif len(data) == 3:
+                rType(data[0], data[1], data[2], "")
+            else:
+                rType(data[0], data[1], data[2], data[3])
             rcount += 1
         elif instType == "J":
             jType(labelstraddr.get(data[1]))
