@@ -6,7 +6,7 @@ from hexAdd import hexAdd
 from typing import Dict
 
 with open("input.txt") as file:
-    open("out.txt", "w").close()
+    open("out.o", "w").close()
     counter = 0
     icount = 0
     jcount = 0
@@ -21,7 +21,7 @@ with open("input.txt") as file:
         if label != -1:
             labelstraddr[string[0:label]] = hexAdd(counter)
             string = string[label + 1 :]
-        counter+=1
+        counter += 1
     counter = 0
     file.seek(0)
     while True:
@@ -31,13 +31,13 @@ with open("input.txt") as file:
             break
         label = string.find(":")
         if label != -1:
-             # labelstraddr[string[0:label]] = hexAdd(counter)
+            # labelstraddr[string[0:label]] = hexAdd(counter)
             string = string[label + 1 :]
             if len(string) == 0:
                 break
-        for i in range(len(string)-1):
-            if(string[i] == ',' and string[i+1] != ' '):
-                string = string[:i]+' '+string[i+1:]
+        for i in range(len(string) - 1):
+            if string[i] == "," and string[i + 1] != " ":
+                string = string[:i] + " " + string[i + 1 :]
         string = "".join([i for i in string if i not in bad_char])
         data = string.split()
 

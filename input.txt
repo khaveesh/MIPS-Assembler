@@ -1,0 +1,32 @@
+addi $t0, $0, 0
+iloop:addi $t1, $0, 0
+jloop:sll $t3, $t0, 2
+sll $t4, $t1, 2
+mult $t3, $s2
+mflo $t2
+add $t2, $t2, $t4
+add $t2, $t2, $s5
+sw $0, 0($t2)
+addi $t5, $0, 0
+kloop:lw $s6, 0($t2)
+sll $t6, $t5, 2
+mult $t3, $s1
+mflo $t8
+add $t8, $t8, $t6
+add $t8, $t8, $s3
+lw $s7, 0($t8)
+mult $t6, $s2
+mflo $t8
+add $t8, $t8, $t4
+add $t8, $t8, $s4
+lw $t9, 0($t8)
+mult $t9, $s7
+mflo $t9
+add $s6, $s6, $t9
+sw $s6, 0($t2)
+addi $t5, $t5, 1
+blt $t5, $s1, kloop
+addi $t1, $t1, 1
+blt $t1, $s2, jloop
+addi $t0, $t0, 1
+blt $t0, $s0, iloop
