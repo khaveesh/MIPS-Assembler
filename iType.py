@@ -8,7 +8,6 @@ def iType2Args(inst, reg1, reg2):
     if inst.upper() not in l:
         raise Exception(" Wrong instruction format")
 
-
     index = reg2.index("(")
     offset = reg2[0:index]
     offset = int(offset)
@@ -53,8 +52,6 @@ def iType3Args(inst, reg1, reg2, dest):
     elif inst.upper() in set2:
         for i in range(6, len(dest)):
             binaddr += "{0:04b}".format(int(dest[i], 16))
-
-
 
     regCode2 = getRegisterCode(reg2)
     printColor(regCode2, "red")
