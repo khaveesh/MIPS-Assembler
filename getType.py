@@ -43,6 +43,10 @@ def getType(inst):
         "BEQ",
         "BGTZ",
         "BLT",
+        "LI",
+        "ORI",
+        "ANDI",
+        "XORI",
     ]
 
     opcode = {
@@ -59,6 +63,12 @@ def getType(inst):
         "BLEZ": "000110",
         "BLT": "100011",
         "BLTZ": "000001",
+        "LI": "001001",
+        "ORI": "001101",
+        "ANDI": "001100",
+        "XORI": "001110",
+        "SUBI": "001000",
+        "CLO": "",
         # J - TYPE
         "J": "000010",
     }
