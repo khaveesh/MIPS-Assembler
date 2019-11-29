@@ -6,7 +6,7 @@ from getRegisterCode import getRegisterCode
 def iType2Args(inst, reg1, reg2):
     if inst.upper() == "LI":
         regCode2 = getRegisterCode(reg1)
-        printColor(regCode2, "red")
+        printColor(regCode2, "blue")
         writeToFile(regCode2)
 
         binaddr = ""
@@ -18,8 +18,8 @@ def iType2Args(inst, reg1, reg2):
             num = num + 1
             num = str(num)
             binaddr += bin(int(num)).replace("0b", "")
-            binaddr = binaddr.zfill(16)
-        printColor(binaddr + "\n", "green")
+            binaddr = binaddr.zfill(21)
+        printColor(binaddr + "\n", "red")
         writeToFile(binaddr + "\n")
     else:
         l = ["SW", "LW"]
@@ -38,12 +38,12 @@ def iType2Args(inst, reg1, reg2):
         secondReg = reg2[(index + 1) : index2]
 
         regCode2 = getRegisterCode(secondReg)
-        printColor(regCode2, "red")
+        printColor(regCode2, "blue")
         writeToFile(regCode2)
         regCode1 = getRegisterCode(reg1)
-        printColor(regCode1, "blue")
+        printColor(regCode1, "green")
         writeToFile(regCode1)
-        printColor(binaddr + "\n", "green")
+        printColor(binaddr + "\n", "red")
         writeToFile(binaddr + "\n")
 
 
@@ -71,14 +71,18 @@ def iType3Args(inst, reg1, reg2, dest):
             binaddr += "{0:04b}".format(int(dest[i], 16))
         binaddr = binaddr[0:-2]
         binaddr = "00" + binaddr
-
     regCode2 = getRegisterCode(reg2)
-    printColor(regCode2, "red")
+    regCode1 = getRegisterCode(reg1)
+
+    if inst.upper() in set2:
+        temp = regCode2
+        regCode2 = regCode1
+        regCode1 = temp
+    printColor(regCode2, "blue")
     writeToFile(regCode2)
 
-    regCode1 = getRegisterCode(reg1)
-    printColor(regCode1, "blue")
+    printColor(regCode1, "green")
     writeToFile(regCode1)
 
-    printColor(binaddr + "\n", "green")
+    printColor(binaddr + "\n", "red")
     writeToFile(binaddr + "\n")

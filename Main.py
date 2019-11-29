@@ -1,3 +1,9 @@
+"""
+Karthik Udupa : IMT2018510
+Khaveesh : IMT2018036
+Keshav Singhal : IMT2018511
+"""
+
 from getType import getType
 from rType import rType
 from iType import iType2Args, iType3Args
@@ -5,8 +11,8 @@ from jType import jType
 from hexAdd import hexAdd
 from typing import Dict
 
-with open("input.txt") as file:
-    open("out.txt", "w").close()
+with open("matrix_mul_asm_input.txt") as file:
+    open("out.o", "w").close()
     counter = 0
     icount = 0
     jcount = 0
@@ -21,7 +27,7 @@ with open("input.txt") as file:
         if label != -1:
             labelstraddr[string[0:label]] = hexAdd(counter)
             string = string[label + 1 :]
-        counter+=1
+        counter += 1
     counter = 0
     file.seek(0)
     while True:
@@ -31,13 +37,12 @@ with open("input.txt") as file:
             break
         label = string.find(":")
         if label != -1:
-             # labelstraddr[string[0:label]] = hexAdd(counter)
             string = string[label + 1 :]
             if len(string) == 0:
                 break
-        for i in range(len(string)-1):
-            if(string[i] == ',' and string[i+1] != ' '):
-                string = string[:i]+' '+string[i+1:]
+        for i in range(len(string) - 1):
+            if string[i] == "," and string[i + 1] != " ":
+                string = string[:i] + " " + string[i + 1 :]
         string = "".join([i for i in string if i not in bad_char])
         data = string.split()
 
@@ -70,6 +75,6 @@ with open("input.txt") as file:
                     iType3Args(data[0], data[1], data[2], data[3])
             icount += 1
 
-    print("Number of R-Type Instructions : " + str(rcount))
+    print("\nNumber of R-Type Instructions : " + str(rcount))
     print("Number of I-Type Instructions : " + str(icount))
     print("Number of J-Type Instructions : " + str(jcount))

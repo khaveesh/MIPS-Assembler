@@ -30,6 +30,11 @@ def getType(inst):
         "DIV",
         "OR",
         "MULTU",
+        "MOVE",
+        "NEGU",
+        "NOT",
+        "MOVN",
+        "MOVZ",
     ]
     iType = [
         "ADDI",

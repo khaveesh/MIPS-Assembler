@@ -27,6 +27,11 @@ function_decoder = {
     "sub": "100010",
     "subu": "100011",
     "xor": "100110",
+    "move": "100001",
+    "negu": "100011",
+    "not": "100111",
+    "movn": "001011",
+    "movz": "001010",
 }
 
 
@@ -38,12 +43,12 @@ def rType(instruction, r1, r2, r3):
     instruction = instruction.lower()
     function = function_decoder[instruction]
     if instruction == "mfhi" or instruction == "mflo":
-        reg3 = "00000"
-        reg2 = "00000"
         reg1 = getRegisterCode(r1)
+        reg2 = "00000"
+        reg3 = "00000"
     elif instruction == "mtlo" or instruction == "mthi":
-        reg2 = getRegisterCode(r1)
         reg1 = "00000"
+        reg2 = getRegisterCode(r1)
         reg3 = "00000"
     elif (
         instruction == "div"
@@ -51,14 +56,26 @@ def rType(instruction, r1, r2, r3):
         or instruction == "mult"
         or instruction == "multu"
     ):
+        reg1 = "00000"
         reg2 = getRegisterCode(r1)
         reg3 = getRegisterCode(r2)
-        reg1 = "00000"
     elif instruction == "sll" or instruction == "sra" or instruction == "srl":
         reg1 = getRegisterCode(r1)
         reg2 = "00000"
         reg3 = getRegisterCode(r2)
         shamt = "{0:05b}".format(int(r3))
+    elif instruction == "move" or instruction == "negu":
+        reg1 = getRegisterCode(r1)
+        reg2 = "00000"
+        reg3 = getRegisterCode(r2)
+    elif instruction == "not":
+        reg1 = getRegisterCode(r1)
+        reg2 = getRegisterCode(r2)
+        reg3 = "00000"
+    elif instruction == "sllv" or instruction == "srav" or instruction == "srlv":
+        reg1 = getRegisterCode(r1)
+        reg2 = getRegisterCode(r3)
+        reg3 = getRegisterCode(r2)
     else:
         reg1 = getRegisterCode(r1)
         reg2 = getRegisterCode(r2)
@@ -67,7 +84,7 @@ def rType(instruction, r1, r2, r3):
     printColor(reg3, "green")
     printColor(reg1, "red")
     printColor(shamt, "cyan")
-    printColor(function + "\n", "grey")
+    printColor(function + "\n", "magenta")
     writeToFile(reg2)
     writeToFile(reg3)
     writeToFile(reg1)
