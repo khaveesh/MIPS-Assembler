@@ -1,5 +1,5 @@
-from writeToFile import writeToFile
 from printColor import printColor
+from writeToFile import writeToFile
 
 
 def jType(address):
