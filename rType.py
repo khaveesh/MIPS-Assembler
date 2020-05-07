@@ -1,5 +1,5 @@
-from printColor import printColor
 from getRegisterCode import getRegisterCode
+from printColor import printColor
 from writeToFile import writeToFile
 
 function_decoder = {
@@ -84,7 +84,7 @@ def rType(instruction, r1, r2, r3):
     printColor(reg3, "green")
     printColor(reg1, "red")
     printColor(shamt, "cyan")
-    printColor(function + "\n", "magenta")
+    printColor(function + "\n", "purple")
     writeToFile(reg2)
     writeToFile(reg3)
     writeToFile(reg1)

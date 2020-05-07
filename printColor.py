@@ -1,5 +1,10 @@
-from termcolor import colored
+from huepy import *
 
 
 def printColor(string, color):
-    print(colored(string, color), end="")
+    flag = ""
+    if "\n" in string:
+        flag = "\n"
+        string = string.rstrip()
+    temp = color + "('" + string + "')"
+    print(eval(temp), end=flag)

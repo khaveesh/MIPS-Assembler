@@ -4,23 +4,16 @@ Khaveesh : IMT2018036
 Keshav Singhal : IMT2018511
 """
 
-from getType import getType
-from rType import rType
-from iType import iType2Args, iType3Args
-from jType import jType
-from hexAdd import hexAdd
 from typing import Dict
 
-<<<<<<< HEAD
+from getType import getType
+from hexAdd import hexAdd
+from iType import iType2Args, iType3Args
+from jType import jType
+from rType import rType
+
 with open("matrix_mul_asm_input.txt") as file:
     open("out.o", "w").close()
-||||||| merged common ancestors
-with open("input.txt") as file:
-    open("out.txt", "w").close()
-=======
-with open("input.txt") as file:
-    open("out.o", "w").close()
->>>>>>> 738e9a9a680e42e0b1a510a1798ec7bb05446a5f
     counter = 0
     icount = 0
     jcount = 0
@@ -45,12 +38,6 @@ with open("input.txt") as file:
             break
         label = string.find(":")
         if label != -1:
-<<<<<<< HEAD
-||||||| merged common ancestors
-             # labelstraddr[string[0:label]] = hexAdd(counter)
-=======
-            # labelstraddr[string[0:label]] = hexAdd(counter)
->>>>>>> 738e9a9a680e42e0b1a510a1798ec7bb05446a5f
             string = string[label + 1 :]
             if len(string) == 0:
                 break
