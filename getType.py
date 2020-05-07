@@ -83,15 +83,14 @@ def getType(inst):
         writeToFile("000000")
         return "R"
 
-    elif inst.upper() in iType:
+    if inst.upper() in iType:
         printColor(opcode[inst.upper()], "yellow")
         writeToFile(opcode[inst.upper()])
         return "I"
 
-    elif inst.upper() == "J":
+    if inst.upper() == "J":
         printColor(opcode["J"], "yellow")
         writeToFile(opcode["J"])
         return "J"
 
-    else:
-        raise Exception("Invalid OpCode : " + inst)
+    raise Exception("Invalid OpCode : {0}".format(inst))

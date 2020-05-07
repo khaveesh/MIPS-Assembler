@@ -36,9 +36,6 @@ function_decoder = {
 
 
 def rType(instruction, r1, r2, r3):
-    # r1 = rd
-    # r2 = rs
-    # r3 = rt
     shamt = "00000"
     instruction = instruction.lower()
     function = function_decoder[instruction]

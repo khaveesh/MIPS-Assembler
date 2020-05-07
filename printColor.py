@@ -1,4 +1,4 @@
-from huepy import *
+import huepy
 
 
 def printColor(string, color):
@@ -6,5 +6,5 @@ def printColor(string, color):
     if "\n" in string:
         flag = "\n"
         string = string.rstrip()
-    temp = color + "('" + string + "')"
+    temp = "huepy.{0}('{1}')".format(color, string)
     print(eval(temp), end=flag)
